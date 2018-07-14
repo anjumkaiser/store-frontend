@@ -37,3 +37,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#Move to pugjs, remove **/*.html
+!src/index.html
+src/**/*.html
