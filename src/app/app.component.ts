@@ -1,14 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'Title';
-  logo = 'logo.png';
-  logo_alt_text = 'Logo';
-  copyright_year = '2018';
-  copyright_holder = 'Copyright Holder';
+export class AppComponent implements OnInit {
+  title: String;
+  logo: String;
+  logo_alt_text: String;
+  copyright_year: String;
+  copyright_holder: String;
+
+  constructor() {
+  }
+
+  ngOnInit () {
+    this.title = 'Title';
+    this.logo = 'logo.png';
+    this.logo_alt_text = 'Logo';
+    this.copyright_year = '2018';
+    this.copyright_holder = 'Copyright Holder';
+  }
 }
