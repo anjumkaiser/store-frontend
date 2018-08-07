@@ -3,5 +3,9 @@ div("*ngFor"="let product of products")
         | Name: {{product.name}}
         | Description {{product.description}}
         | Rating: {{product.rating}}
-
-        button((click)="add_product(product)") Click me 
+        div
+                a(routerLink='/product/{{product.id}}') Details 
+        div
+                button((click)="add_product(product)")
+                        i.fa.fa-plus
+                        |  Add to cart

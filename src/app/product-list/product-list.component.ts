@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Product } from '../classes/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -12,7 +13,7 @@ export class ProductListComponent implements OnInit {
   products: Product[];
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.products = [
