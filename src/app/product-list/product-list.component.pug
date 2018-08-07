@@ -3,3 +3,5 @@ div("*ngFor"="let product of products")
         | Name: {{product.name}}
         | Description {{product.description}}
         | Rating: {{product.rating}}
+
+        button((click)="add_product(product)") Click me 

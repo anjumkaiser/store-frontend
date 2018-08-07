@@ -21,4 +21,11 @@ export class ProductListComponent implements OnInit {
     ];
   }
 
+
+  add_product(product: Product): void {
+    //console.log('X');
+    console.log(product);
+
+  }
+
 }
