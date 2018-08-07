@@ -5,6 +5,7 @@ PUGJS=pug -O "{doctype: 'html'}"
 
 all:	src/index.html \
 	src/app/app.component.html \
+	src/app/product-detail/product-detail.component.html \
 	src/app/product-list/product-list.component.html
 
 
@@ -15,4 +16,7 @@ src/app/app.component.html:	src/app/app.component.pug
 	$(PUGJS) $<
 
 src/app/product-list/product-list.component.html:	src/app/product-list/product-list.component.pug
+	$(PUGJS) $<
+
+src/app/product-detail/product-detail.component.html:	src/app/product-detail/product-detail.component.pug
 	$(PUGJS) $<
