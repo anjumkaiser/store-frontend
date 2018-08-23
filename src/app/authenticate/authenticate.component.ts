@@ -18,6 +18,8 @@ export class AuthenticateComponent implements OnInit {
   minusernamelength = 5;
   minpasswordlength = 5;
 
+  password_hidden = true;
+
   constructor(
     private route: ActivatedRoute,
     private location: Location,
@@ -59,5 +61,10 @@ export class AuthenticateComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(this.minpasswordlength)]],
      });
      this.formGroupLogin.reset();
+  }
+
+
+  toggle_password_visibility(): void {
+    this.password_hidden = this.password_hidden ? false : true;
   }
 }

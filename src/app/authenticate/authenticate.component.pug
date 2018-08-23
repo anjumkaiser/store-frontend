@@ -21,7 +21,8 @@ div
                 div
                     mat-form-field
                         mat-label Password
-                        input(type="password", matInput, mat-form-field, required, formControlName="password", #password)
+                        input([type]="password_hidden ? 'password' : 'text'", matInput, mat-form-field, required, formControlName="password", #password)
+                        i(matSuffix, class="fa {{password_hidden ? 'fa-eye' : 'fa-eye-slash'}}", (click)="toggle_password_visibility()")
                         mat-hint Min {{minpasswordlength}} characters
                         mat-hint(align="end") {{+password.value?.length}}
         mat-card-actions
