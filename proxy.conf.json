@@ -9,7 +9,12 @@
 		"loglevel": "debug"
 	},
 	"/images": { 
-		"target": "http://localhost:4000",
+		"target": "http://localhost:4001",
+		"secure": false,
+		"loglevel": "debug"
+	},
+	"/products": {
+		"target": "http://localhost:4001",
 		"secure": false,
 		"loglevel": "debug"
 	}
