@@ -15,11 +15,11 @@ div
                 div
                     mat-form-field
                         mat-label Username
-                        input(type="text", matInput, mat-form-field-control, formControlName="username")
+                        input(type="text", matInput, mat-form-field-control, required, formControlName="username")
                 div
                     mat-form-field
                         mat-label Password
-                        input(type="password", matInput, mat-form-field, formControlName="password")
+                        input(type="password", matInput, mat-form-field, required, formControlName="password")
         mat-card-actions
             button(type="submit", mat-button, "[disabled]"="!formGroupLogin.valid", color="primary", (click)="onSubmit()") Login
             button(type="cancel", mat-button, (click)="onCancel()") Clear
