@@ -15,6 +15,8 @@ import { AuthUser, AuthenticationService } from '../services/authentication.serv
 export class AuthenticateComponent implements OnInit {
 
   formGroupLogin: FormGroup;
+  minusernamelength = 5;
+  minpasswordlength = 5;
 
   constructor(
     private route: ActivatedRoute,
