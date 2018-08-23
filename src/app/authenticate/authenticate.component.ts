@@ -55,8 +55,8 @@ export class AuthenticateComponent implements OnInit {
 
   clearFormContent() {
     this.formGroupLogin = this.formbuilder.group({
-      username: ['', [Validators.required, Validators.minLength(4)]],
-      password: ['', [Validators.required, Validators.minLength(5)]],
+      username: ['', [Validators.required, Validators.minLength(this.minusernamelength)]],
+      password: ['', [Validators.required, Validators.minLength(this.minpasswordlength)]],
      });
      this.formGroupLogin.reset();
   }
