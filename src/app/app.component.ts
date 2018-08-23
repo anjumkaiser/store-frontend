@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit () {
     this.title = 'Title';
-    this.logo = 'logo.png';
+    this.logo = 'images/logo.png';
     this.logo_alt_text = 'Logo';
     this.copyright_year = '2018';
     this.copyright_holder = 'Copyright Holder';
