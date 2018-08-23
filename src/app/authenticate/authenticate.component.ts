@@ -25,7 +25,13 @@ export class AuthenticateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.clearFormContent();
+    this.authService.isLoggedIn().subscribe((value) => {
+      if (true === value) {
+        this.router.navigate(['/']);
+      } else {
+        this.clearFormContent();
+      }
+    });
   }
 
   onSubmit() {
@@ -39,14 +45,6 @@ export class AuthenticateComponent implements OnInit {
     auth_user.password = this.formGroupLogin.value.password;
 
     this.authService.authenticate(auth_user);
-    this.authService.isLoggedIn().subscribe((value) => {
-
-      if (true === value) {
-        this.router.navigate(['/']);
-      } else {
-        this.clearFormContent();
-      }
-    });
   }
 
   onCancel() {

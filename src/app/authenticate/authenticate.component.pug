@@ -7,7 +7,6 @@ div
             a(mat-raised-button, routerLink='/autheticate/google') Google
             a(mat-raised-button, routerLink='/autheticate/facebook') Facebook
             a(mat-raised-button, routerLink='/autheticate/twitter') Twitter
-
     mat-card
         mat-card-header
             mat-card-title Local Login
@@ -16,7 +15,7 @@ div
                 div
                     mat-form-field
                         mat-label Username
-                        input(type="text", matInput, mat-form-field-control, formControlName="username", focus)
+                        input(type="text", matInput, mat-form-field-control, formControlName="username")
                 div
                     mat-form-field
                         mat-label Password
@@ -24,5 +23,3 @@ div
         mat-card-actions
             button(type="submit", mat-button, "[disabled]"="!formGroupLogin.valid", color="primary", (click)="onSubmit()") Login
             button(type="cancel", mat-button, (click)="onCancel()") Clear
-
-        
