@@ -1,0 +1,37 @@
+.grid-container-tall {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.product-card-tall {
+    max-height: 600px;
+    height: auto;
+    max-width: 400px;
+    width: auto;
+}
+
+.grid-container-wide {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+
+.product-card-wide {
+    max-height: 400px;
+    height: auto;
+    max-width: 600px;
+    width: auto;
+}
+
+.product-image {
+    max-height: 400px;
+    height: auto;
+    max-width: 600px;
+    width: auto;
+}
+
+
+.product-price {
+    font-size: large;
+    font-weight: bold;
+}

@@ -1,11 +1,14 @@
-div("*ngFor"="let product of products")
-        | Id : {{product.id}}
-        | Name: {{product.name}}
-        | Description {{product.description}}
-        | Rating: {{product.rating}}
-        div
-                a(routerLink='/product/{{product.id}}') Details 
-        div
-                button((click)="add_product(product)")
-                        i.fa.fa-plus
-                        |  Add to cart
+div.grid-container-tall
+        div("*ngFor"="let product of products")
+                mat-card.product-card-tall
+                        img.product-image(mat-card-image, src='/products/{{product.id}}/cardpic_wide.jpg')
+                        mat-card-content
+                                div
+                                        mat-label {{product.name}}
+                                div
+                                        mat-label(class="product-price")  {{product.price | currency}}
+                        mat-card-actions
+                                button(mat-button-raised, color='primary', (click)="add_to_cart(product)" ) 
+                                        i.fa.fa-cart-arrow-down
+                                        |  Add to Cart
+                                a(mat-button, routerLink='/product/{{product.id}}') Details
