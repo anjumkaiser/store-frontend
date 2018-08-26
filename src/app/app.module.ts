@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
     ProductListComponent,
     ProductDetailComponent,
     AuthenticateComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

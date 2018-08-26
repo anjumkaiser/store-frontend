@@ -1,0 +1,12 @@
+mat-toolbar
+    span
+        img.logo(src='{{logo}}', alt="{{logo_alt_text}}")
+    
+    span {{title}}
+    button(mat-button, (click)="do_checkout()") Check Out
+
+    button(mat-button, *ngIf="!isLoggedIn", (click)="do_login()") Login 
+    button(mat-button, *ngIf="isLoggedIn", [matMenuTriggerFor]="appMenu") Username {{ user_name }}
+    mat-menu(#appMenu='matMenu')
+        button(mat-menu-item, (click)="show_profile()") Settings
+        button(mat-menu-item, (click)="do_logout()") Log out
