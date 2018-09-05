@@ -6,6 +6,7 @@ PUGJS=pug -O "{doctype: 'html'}"
 all:	src/index.html \
 	src/app/app.component.html \
 	src/app/navbar/navbar.component.html \
+	src/app/user-profile/user-profile.component.html \
 	src/app/authenticate/authenticate.component.html \
 	src/app/product-detail/product-detail.component.html \
 	src/app/product-list/product-list.component.html
@@ -27,4 +28,7 @@ src/app/product-detail/product-detail.component.html:	src/app/product-detail/pro
 	$(PUGJS) $<
 
 src/app/navbar/navbar.component.html:	src/app/navbar/navbar.component.pug
+	$(PUGJS) $<
+
+src/app/user-profile/user-profile.component.html:	src/app/user-profile/user-profile.component.pug
 	$(PUGJS) $<

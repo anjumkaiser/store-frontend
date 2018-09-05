@@ -26,7 +26,7 @@ export class AuthenticationService {
     private http: HttpClient,
   ) { }
 
-  isLoggedIn(): Observable<boolean> {
+  isLoggedIn(): BehaviorSubject<boolean> {
     return this.loggedIn;
   }
 

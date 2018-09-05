@@ -12,6 +12,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     ProductDetailComponent,
     AuthenticateComponent,
     NavbarComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppMaterialModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

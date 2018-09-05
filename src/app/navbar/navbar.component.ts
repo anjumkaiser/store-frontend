@@ -33,6 +33,7 @@ export class NavbarComponent implements OnInit {
   }
 
   show_profile(): void {
+    this.router.navigate(['profile']);
     console.log('show_profile');
   }
 
@@ -41,7 +42,7 @@ export class NavbarComponent implements OnInit {
   }
 
   do_login(): void {
-    this.router.navigate(['/authenticate']);
+    this.router.navigate(['authenticate']);
   }
 
   do_logout(): void {
