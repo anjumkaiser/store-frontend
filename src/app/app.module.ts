@@ -8,11 +8,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material.module';
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { AuthenticateComponent } from './authenticate/authenticate.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ProductListComponent } from './views/product-list/product-list.component';
+import { ProductDetailComponent } from './views/product-detail/product-detail.component';
+import { AuthenticateComponent } from './views/authenticate/authenticate.component';
+import { NavbarComponent } from './views/navbar/navbar.component';
+import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { AuthenticationService } from './services/authentication.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 

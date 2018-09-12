@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { AuthenticateComponent } from './authenticate/authenticate.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ProductListComponent } from './views/product-list/product-list.component';
+import { ProductDetailComponent } from './views/product-detail/product-detail.component';
+import { AuthenticateComponent } from './views/authenticate/authenticate.component';
+import { UserProfileComponent } from './views/user-profile/user-profile.component';
 
 import { AuthenticationGuard } from './guards/authentication.guard';
 

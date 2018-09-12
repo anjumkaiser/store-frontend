@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthUser, AuthenticationService } from '../services/authentication.service';
+import { AuthUser, AuthenticationService } from '../../services/authentication.service';
 
 
 @Component({
