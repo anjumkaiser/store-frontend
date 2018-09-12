@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { tokenKey } from '@angular/core/src/view';
-import { getLocaleMonthNames } from '@angular/common';
 
 export class AuthUser {
   username: string;
