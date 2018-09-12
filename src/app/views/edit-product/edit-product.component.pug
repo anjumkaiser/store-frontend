@@ -1,0 +1,30 @@
+div
+    mat-card
+        mat-card-header
+            mat-card-title {{action}} Product
+        mat-card-content
+            form([formGroup]="form_group_edit_product")
+                div
+                    mat-form-field
+                        mat-label Name
+                        input(type="text", matInput, mat-form-field-control, required, formControlName="product_name", #product_name)
+                        mat-hint(align="end") {{(+product_name_max_length) - (+product_name.value?.length)}}
+                div
+                    mat-form-field
+                        mat-label Description
+                        textarea(matInput, mat-form-field, required, formControlName="product_description", #product_description)
+                        mat-hint(align="end") {{+product_description.value?.length}}
+
+                div
+                    mat-form-field
+                        mat-label Price
+                        input(type="number", matInput, mat-form-field, required, formControlName="product_price", #product_price)
+
+                div
+                    div Rating
+                    div
+                        bar-rating("[max]"="5", required, formControlName='product_rating', #product_rating)
+                                
+        mat-card-actions
+            button(type="submit", mat-button, "[disabled]"="!form_group_edit_product.valid", color="primary", (click)="onSubmit()") {{(action==='New') ? 'Add' : 'Update'}}
+            button(type="cancel", mat-button, (click)="onCancel()") Clear

@@ -9,6 +9,7 @@ all:	src/index.html \
 	src/app/views/user-profile/user-profile.component.html \
 	src/app/views/authenticate/authenticate.component.html \
 	src/app/views/product-detail/product-detail.component.html \
+	src/app/views/edit-product/edit-product.component.html \
 	src/app/views/product-list/product-list.component.html
 
 
@@ -25,6 +26,9 @@ src/app/views/product-list/product-list.component.html:	src/app/views/product-li
 	$(PUGJS) $<
 
 src/app/views/product-detail/product-detail.component.html:	src/app/views/product-detail/product-detail.component.pug
+	$(PUGJS) $<
+
+src/app/views/edit-product/edit-product.component.html:	src/app/views/edit-product/edit-product.component.pug
 	$(PUGJS) $<
 
 src/app/views/navbar/navbar.component.html:	src/app/views/navbar/navbar.component.pug
