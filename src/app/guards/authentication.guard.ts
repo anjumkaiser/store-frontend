@@ -23,7 +23,8 @@ export class AuthenticationGuard implements CanActivate {
       return true;
     }
 
-    this.router.navigate(['authenticate']);
+    const params = next.url.toString();
+    this.router.navigate(['authenticate',  params]);
     return false;
 
   }

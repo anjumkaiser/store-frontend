@@ -20,6 +20,8 @@ export class AuthenticateComponent implements OnInit {
 
   password_hidden = true;
 
+  returnUrl: String = '/';
+
   constructor(
     private route: ActivatedRoute,
     private location: Location,
@@ -29,9 +31,16 @@ export class AuthenticateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.route.params.subscribe(p => {
+      if (p.path) {
+        this.returnUrl = p.path;
+      }
+    });
+
     this.authService.isLoggedIn().subscribe((value) => {
       if (true === value) {
-        this.router.navigate(['/']);
+        this.router.navigate([this.returnUrl]);
       } else {
         this.clearFormContent();
       }

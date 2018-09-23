@@ -10,6 +10,7 @@ import { EditProductComponent } from './views/edit-product/edit-product.componen
 import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
+  { path: 'authenticate/:path', component: AuthenticateComponent },
   { path: 'authenticate', component: AuthenticateComponent },
   { path: 'product', component: ProductListComponent },
   { path: 'product/new', component: EditProductComponent, canActivate: [AuthenticationGuard] },
