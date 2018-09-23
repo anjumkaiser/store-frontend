@@ -28,7 +28,6 @@ export class NavbarComponent implements OnInit {
     this.logo_alt_text = 'Logo';
     this.authService.isLoggedIn().subscribe((value) => {
       this.isLoggedIn = value;
-      console.log('auth_service isloggedin value: ' + value);
     });
   }
 
