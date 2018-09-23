@@ -1,0 +1,12 @@
+div
+    div(*ngFor='let product of products')
+        span {{product.id}}
+        span {{product.name}}
+        span {{product.description}}
+        span 
+            a(routerLink='{{product.id}}')
+                i.fa.fa-info
+            a(routerLink='{{product.id}}/edit')
+                i.fa.fa-edit
+            a(routerLink='{{product.id}}/delete')
+                i.fa.fa-trash
