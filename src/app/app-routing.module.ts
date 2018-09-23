@@ -6,7 +6,6 @@ import { ProductDetailComponent } from './views/product-detail/product-detail.co
 import { AuthenticateComponent } from './views/authenticate/authenticate.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { EditProductComponent } from './views/edit-product/edit-product.component';
-import { BackofficeDashboardComponent } from './views/backoffice-dashboard/backoffice-dashboard.component';
 
 import { AuthenticationGuard } from './guards/authentication.guard';
 
@@ -18,7 +17,6 @@ const routes: Routes = [
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'product/:id/edit', component: EditProductComponent, canActivate: [AuthenticationGuard] },
   { path: 'profile', component: UserProfileComponent, canActivate: [AuthenticationGuard] },
-  { path: 'backoffice', component: BackofficeDashboardComponent, canActivate: [AuthenticationGuard] },
   { path: '', redirectTo: 'product', pathMatch: 'full' },
 ];
 
