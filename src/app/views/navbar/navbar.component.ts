@@ -34,7 +34,10 @@ export class NavbarComponent implements OnInit {
 
   show_profile(): void {
     this.router.navigate(['profile']);
-    console.log('show_profile');
+  }
+
+  show_backoffice_dashboard(): void {
+    this.router.navigate(['backoffice']);
   }
 
   do_checkout(): void {

@@ -17,6 +17,7 @@ import { AuthenticateComponent } from './views/authenticate/authenticate.compone
 import { NavbarComponent } from './views/navbar/navbar.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { EditProductComponent } from './views/edit-product/edit-product.component';
+import { BackofficeDashboardComponent } from './views/backoffice-dashboard/backoffice-dashboard.component';
 
 import { AuthenticationService } from './services/authentication.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
@@ -30,6 +31,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     AuthenticateComponent,
     NavbarComponent,
     UserProfileComponent,
+    BackofficeDashboardComponent,
   ],
   imports: [
     BrowserModule,
