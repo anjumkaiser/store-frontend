@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ProductService } from '../../services/product.service';
+
 import { Product } from '../../classes/product';
 
 @Component({
@@ -11,13 +13,18 @@ export class BackofficeProductListComponent implements OnInit {
 
   products: Product[];
 
-  constructor() { }
+  constructor(
+    private productService: ProductService,
+  ) { }
 
   ngOnInit() {
-    this.products = [
-      new Product(1, 'Product 1', 'Product description for Product 1', 1.24, 3.0),
-      new Product(2, 'Product 2', 'Product description for Product 2', 3.2 , 1.3),
-    ];
+
+    this.productService.getProducts().subscribe( products => {
+      this.products = products;
+    }, error => {
+      this.products = [];
+      // console.log(`error status [${error.status}] messsage [${error.message}]`);
+    } );
   }
 
 }
