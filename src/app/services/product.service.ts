@@ -22,4 +22,14 @@ export class ProductService {
 
     return this.http.get<Product[]>(http_url, http_options);
   }
+
+  addProduct(product: Product) {
+    const http_url = 'api/product/add';
+    const http_options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
+
+    const data = JSON.stringify(product);
+ 
+    return this.http.post<Product>(http_url, data,  http_options);
+
+  }
 }
