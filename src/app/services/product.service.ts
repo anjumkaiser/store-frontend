@@ -15,11 +15,11 @@ export class ProductService {
   ) { }
 
 
-  getProducts(): Observable<Product> {
+  getProducts(): Observable<Product[]> {
 
     const http_url = 'api/product';
     const http_options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
-    return this.http.get<Product>(http_url, http_options);
+    return this.http.get<Product[]>(http_url, http_options);
   }
 }
