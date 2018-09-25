@@ -5,6 +5,7 @@ import { BackofficeDashboardComponent } from '../views/backoffice-dashboard/back
 import { BackofficeProductListComponent } from '../views/backoffice-product-list/backoffice-product-list.component';
 
 import { AuthenticationGuard } from '../guards/authentication.guard';
+import { EditProductComponent } from '../views/edit-product/edit-product.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
     path: 'backoffice', canActivate: [AuthenticationGuard] , children: [
       { path: '', component: BackofficeDashboardComponent },
       { path: 'product', component: BackofficeProductListComponent },
+      { path: 'product/new', component: EditProductComponent },
     ]
   }
 ];
