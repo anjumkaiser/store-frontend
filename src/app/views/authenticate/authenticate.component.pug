@@ -26,5 +26,5 @@ div
                         mat-hint Min {{minpasswordlength}} characters
                         mat-hint(align="end") {{+password.value?.length}}
         mat-card-actions
-            button(type="submit", mat-button, "[disabled]"="!formGroupLogin.valid", color="primary", (click)="onSubmit()") Login
-            button(type="cancel", mat-button, (click)="onCancel()") Clear
+            button(type="submit", mat-button, [disabled]="!formGroupLogin.valid || isButtonLocked", color="primary", (click)="onSubmit()") Login
+            button(type="cancel", mat-button, [disabled]="isButtonLocked", (click)="onCancel()") Clear

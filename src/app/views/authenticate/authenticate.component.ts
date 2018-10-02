@@ -20,6 +20,8 @@ export class AuthenticateComponent implements OnInit {
 
   password_hidden = true;
 
+  isButtonLocked = false;
+
   returnUrl: String = '/';
 
   constructor(
@@ -43,6 +45,7 @@ export class AuthenticateComponent implements OnInit {
         this.router.navigate([this.returnUrl]);
       } else {
         this.clearFormContent();
+        this.isButtonLocked = false;
       }
     });
   }
@@ -52,6 +55,8 @@ export class AuthenticateComponent implements OnInit {
     if (this.formGroupLogin.invalid) {
       return;
     }
+
+    this.isButtonLocked = true;
 
     const auth_user: AuthUser = new AuthUser();
     auth_user.username = this.formGroupLogin.value.username;
