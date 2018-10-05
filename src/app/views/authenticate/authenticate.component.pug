@@ -1,15 +1,25 @@
-div
+div.container
     mat-card
         mat-card-header
-            mat-card-title Authenticate using
+            mat-card-title
+                h5 Sign in with
         mat-card-content
-        mat-card-footer
-            a(mat-raised-button, routerLink='/autheticate/google') Google
-            a(mat-raised-button, routerLink='/autheticate/facebook') Facebook
-            a(mat-raised-button, routerLink='/autheticate/twitter') Twitter
+            div.cardbutton
+                a.google_button(mat-raised-button, routerLink='/autheticate/google')
+                    i.fa.fa-google
+                    |  Google
+            div.cardbutton
+                a.facebook_button(mat-raised-button, routerLink='/autheticate/facebook')
+                    i.icon.fa.fa-facebook
+                    |  Facebook
+            div.cardbutton
+                a.twitter_button(mat-raised-button, routerLink='/autheticate/twitter')
+                    i.fa.fa-twitter
+                    |  Twitter
     mat-card
         mat-card-header
-            mat-card-title Local Login
+            mat-card-title
+                h5 or Sign in locally
         mat-card-content
             form([formGroup]="formGroupLogin")
                 div

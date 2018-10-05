@@ -1,0 +1,42 @@
+.container {
+    width: 400px;
+    height: 400px;
+    text-align: center;
+}
+
+
+a:hover {
+    cursor: arrow;
+    text-transform: capitalize;
+    text-decoration: none;
+    color: black;
+}
+
+
+.google_button {
+    background-color: #4285F4;
+    color: #FFFFFF !important;
+    font-family: Roboto;
+    font-size: medium;
+    align-content: stretch;
+    width: 200px;
+}
+
+
+.facebook_button {
+    background-color: #4267b2;
+    color: #FFFFFF !important;
+    width: 200px;
+}
+
+
+.twitter_button {
+    background-color: #3CF;
+    color: #FFFFFF !important;
+    width: 200px;
+}
+
+
+.cardbutton {
+    padding: 3px;
+}
