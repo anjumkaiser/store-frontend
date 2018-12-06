@@ -6,11 +6,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Product } from '../../classes/product';
 
 @Component({
-  selector: 'app-edit-product',
-  templateUrl: './edit-product.component.html',
-  styleUrls: ['./edit-product.component.css']
+  selector: 'app-backoffice-product-edit',
+  templateUrl: './backoffice-product-edit.component.html',
+  styleUrls: ['./backoffice-product-edit.component.css']
 })
-export class EditProductComponent implements OnInit {
+export class BackofficeProductEditComponent implements OnInit {
 
   product: Product;
 

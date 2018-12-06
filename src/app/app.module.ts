@@ -18,7 +18,6 @@ import { ProductDetailComponent } from './views/product-detail/product-detail.co
 import { AuthenticateComponent } from './views/authenticate/authenticate.component';
 import { NavbarComponent } from './views/navbar/navbar.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
-import { EditProductComponent } from './views/edit-product/edit-product.component';
 
 import { AuthenticationService } from './services/authentication.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
@@ -28,7 +27,6 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     AppComponent,
     ProductListComponent,
     ProductDetailComponent,
-    EditProductComponent,
     AuthenticateComponent,
     NavbarComponent,
     UserProfileComponent,
