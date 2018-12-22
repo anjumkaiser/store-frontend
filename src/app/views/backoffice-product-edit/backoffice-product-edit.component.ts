@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Product } from '../../classes/product';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-backoffice-product-edit',
@@ -14,7 +15,7 @@ export class BackofficeProductEditComponent implements OnInit {
 
   product: Product;
 
-  form_group_edit_product: FormGroup;
+  form_group_product_edit: FormGroup;
 
   product_name_min_length = 3;
   product_name_max_length = 25;
@@ -27,6 +28,7 @@ export class BackofficeProductEditComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private formbuilder: FormBuilder,
+    private prouctService: ProductService,
   ) {
   }
 
@@ -36,7 +38,7 @@ export class BackofficeProductEditComponent implements OnInit {
   }
 
   clearFormContent() {
-    this.form_group_edit_product = this.formbuilder.group({
+    this.form_group_product_edit = this.formbuilder.group({
       product_name: [this.product.name, [
         Validators.required,
         Validators.minLength(this.product_name_min_length),
@@ -58,10 +60,14 @@ export class BackofficeProductEditComponent implements OnInit {
 
   onSubmit() {
     const product: Product = new Product(-1, '', '', +0.0, +0.0);
-    product.name = this.form_group_edit_product.value.product_name;
-    product.description = this.form_group_edit_product.value.product_description;
-    product.price = this.form_group_edit_product.value.product_price;
-    product.rating = this.form_group_edit_product.value.product_rating;
+    product.name = this.form_group_product_edit.value.product_name;
+    product.description = this.form_group_product_edit.value.product_description;
+    product.price = this.form_group_product_edit.value.product_price;
+    product.rating = this.form_group_product_edit.value.product_rating;
+
+    this.prouctService.addProduct(product).subscribe(s => {
+      console.log(s);
+    });
   }
 
   onCancel() {
