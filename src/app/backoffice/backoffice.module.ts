@@ -14,6 +14,7 @@ import { BackofficeRoutingModule } from './backoffice-routing.module';
 import { BackofficeDashboardComponent } from '../views/backoffice-dashboard/backoffice-dashboard.component';
 import { BackofficeProductListComponent } from '../views/backoffice-product-list/backoffice-product-list.component';
 import { BackofficeProductEditComponent } from '../views/backoffice-product-edit/backoffice-product-edit.component';
+import { BackofficeCountryListComponent } from '../views/backoffice-country-list/backoffice-country-list.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { BackofficeProductEditComponent } from '../views/backoffice-product-edit
     BackofficeDashboardComponent,
     BackofficeProductListComponent,
     BackofficeProductEditComponent,
+    BackofficeCountryListComponent,
   ]
 })
 export class BackofficeModule { }
