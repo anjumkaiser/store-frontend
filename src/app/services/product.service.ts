@@ -25,10 +25,10 @@ export class ProductService {
     return this.http.get<IProduct[]>(http_url, http_options);
   }
 
-  addProduct(product: IProduct) {
+  addProduct(product: IProduct): Observable<Object> {
     const http_url = 'api/product/add';
     const http_options = { headers: new HttpHeaders({'Content-Type': 'application/json'}) };
     const data = JSON.stringify(product);
-    this.http.post<Product>(http_url, data,  http_options);
+    return this.http.post<Object>(http_url, data, http_options);
   }
 }
