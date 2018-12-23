@@ -12,6 +12,7 @@ all:	src/index.html \
 	src/app/views/product-list/product-list.component.html \
 	src/app/views/backoffice-dashboard/backoffice-dashboard.component.html \
 	src/app/views/backoffice-country-list/backoffice-country-list.component.html \
+	src/app/views/backoffice-country-edit/backoffice-country-edit.component.html \
 	src/app/views/backoffice-product-edit/backoffice-product-edit.component.html \
 	src/app/views/backoffice-product-list/backoffice-product-list.component.html
 
@@ -46,4 +47,7 @@ src/app/views/backoffice-product-list/backoffice-product-list.component.html: sr
 	$(PUGJS) $<
 
 src/app/views/backoffice-country-list/backoffice-country-list.component.html: src/app/views/backoffice-country-list/backoffice-country-list.component.pug
+	$(PUGJS) $<
+
+src/app/views/backoffice-country-edit/backoffice-country-edit.component.html: src/app/views/backoffice-country-edit/backoffice-country-edit.component.pug
 	$(PUGJS) $<

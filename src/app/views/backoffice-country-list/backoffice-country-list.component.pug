@@ -2,7 +2,7 @@ div.main
     h1 Country
     
     div
-        a(mat-raised-button) Add
+        a(mat-raised-button, routerLink='new') Add
     
     mat-form-field
         input(matInput (keyup)="applyFilter($event.target.value)", placeholder="Filter")

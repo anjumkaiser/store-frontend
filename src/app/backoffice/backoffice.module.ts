@@ -7,14 +7,13 @@ import { BarRatingModule } from 'ngx-bar-rating';
 
 import { AppMaterialModule } from '../app-material.module';
 
-
-
 import { BackofficeRoutingModule } from './backoffice-routing.module';
 
 import { BackofficeDashboardComponent } from '../views/backoffice-dashboard/backoffice-dashboard.component';
 import { BackofficeProductListComponent } from '../views/backoffice-product-list/backoffice-product-list.component';
 import { BackofficeProductEditComponent } from '../views/backoffice-product-edit/backoffice-product-edit.component';
 import { BackofficeCountryListComponent } from '../views/backoffice-country-list/backoffice-country-list.component';
+import { BackofficeCountryEditComponent } from '../views/backoffice-country-edit/backoffice-country-edit.component';
 
 
 @NgModule({
@@ -32,6 +31,7 @@ import { BackofficeCountryListComponent } from '../views/backoffice-country-list
     BackofficeProductListComponent,
     BackofficeProductEditComponent,
     BackofficeCountryListComponent,
+    BackofficeCountryEditComponent,
   ]
 })
 export class BackofficeModule { }

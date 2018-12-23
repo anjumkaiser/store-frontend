@@ -7,6 +7,7 @@ import { BackofficeProductEditComponent } from '../views/backoffice-product-edit
 
 import { AuthenticationGuard } from '../guards/authentication.guard';
 import { BackofficeCountryListComponent } from '../views/backoffice-country-list/backoffice-country-list.component';
+import { BackofficeCountryEditComponent } from '../views/backoffice-country-edit/backoffice-country-edit.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,11 @@ const routes: Routes = [
       { path: '', component: BackofficeDashboardComponent },
       { path: 'product', component: BackofficeProductListComponent },
       { path: 'product/new', component: BackofficeProductEditComponent },
-      { path: 'country', component: BackofficeCountryListComponent },
+      { path: 'country', children: [
+        { path: '', component: BackofficeCountryListComponent },
+        { path: 'new', component: BackofficeCountryEditComponent },
+        { path: ':id', component: BackofficeCountryEditComponent },
+      ]}
     ]
   }
 ];

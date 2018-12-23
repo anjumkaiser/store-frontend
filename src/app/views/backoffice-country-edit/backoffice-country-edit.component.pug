@@ -1,0 +1,18 @@
+div.main
+    form([formGroup]="form_group_country_edit")
+        div
+            mat-form-field
+                mat-label(for="country_id") Id
+                input(formControlName="country_id", readonly, matInput)
+        div
+            mat-form-field
+                mat-label(for="country_code") Code
+                input.country_code(placeholder="Country Code", formControlName="country_code", required, minlength="3", maxlength="3", matInput, size="3", type="text", pattern="[A-Za-z]{3}")
+        div
+            mat-form-field
+                mat-label(for="country_name") Name
+                input(placeholder="Country Name", formControlName="country_name", required, matInput)
+        div
+            span: button(mat-button, type="submit", (click)="submit_button_clicked()") Submit
+            span: button(mat-button, type="cancel", (click)="cancel_button_clicked()") Cancel
+        

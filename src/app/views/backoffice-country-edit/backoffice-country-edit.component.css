@@ -1,0 +1,9 @@
+div.main {
+    padding: 10px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.country_code {
+    text-transform: uppercase;
+}
