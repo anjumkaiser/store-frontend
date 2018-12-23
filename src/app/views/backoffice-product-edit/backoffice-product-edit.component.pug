@@ -26,5 +26,5 @@ div
                         bar-rating("[max]"="5", required, formControlName='product_rating', #product_rating)
                                 
         mat-card-actions
-            button(type="submit", mat-button, "[disabled]"="!form_group_edit_product.valid", color="primary", (click)="onSubmit()") {{(action==='New') ? 'Add' : 'Update'}}
+            button(type="submit", mat-button, "[disabled]"="!form_group_product_edit.valid", color="primary", (click)="onSubmit()") {{(action==='New') ? 'Add' : 'Update'}}
             button(type="cancel", mat-button, (click)="onCancel()") Clear
