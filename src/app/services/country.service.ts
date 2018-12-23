@@ -20,4 +20,10 @@ export class CountryService {
     return this.http.get<ICountry[]>(http_url, http_options);
   }
 
+  addCountry(country: Country): Observable<Country> {
+    const http_url = 'api/country/add';
+    const http_options = { headers: new HttpHeaders({'Content-Type': 'application/json'}) };
+    return this.http.post<ICountry>(http_url, country, http_options);
+  }
+
 }
