@@ -20,13 +20,13 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 })
 export class BackofficeCountryListComponent implements OnInit {
 
-  private displayedColumns: string[] = ['code', 'name', 'id'];
+  displayedColumns: string[] = ['code', 'name', 'id'];
   private resultsLength = 0;
   private isLoadingResults = false;
   private isRateLimitReached = false;
   private selection = new SelectionModel<ICountry>(true, []);
 
-  private countries: MatTableDataSource<ICountry>;
+  countries: MatTableDataSource<ICountry>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
