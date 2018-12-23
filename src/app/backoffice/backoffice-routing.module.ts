@@ -12,15 +12,21 @@ import { BackofficeCountryEditComponent } from '../views/backoffice-country-edit
 
 const routes: Routes = [
   {
-    path: 'backoffice', canActivate: [AuthenticationGuard] , children: [
+    path: 'backoffice', canActivate: [AuthenticationGuard], children: [
       { path: '', component: BackofficeDashboardComponent },
-      { path: 'product', component: BackofficeProductListComponent },
-      { path: 'product/new', component: BackofficeProductEditComponent },
-      { path: 'country', children: [
-        { path: '', component: BackofficeCountryListComponent },
-        { path: 'new', component: BackofficeCountryEditComponent },
-        { path: ':id', component: BackofficeCountryEditComponent },
-      ]}
+      {
+        path: 'product', children: [
+          { path: '', component: BackofficeProductListComponent },
+          { path: 'new', component: BackofficeProductEditComponent },
+        ]
+      },
+      {
+        path: 'country', children: [
+          { path: '', component: BackofficeCountryListComponent },
+          { path: 'new', component: BackofficeCountryEditComponent },
+          { path: ':id', component: BackofficeCountryEditComponent },
+        ]
+      }
     ]
   }
 ];
