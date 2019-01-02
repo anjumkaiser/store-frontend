@@ -17,6 +17,7 @@ export class BackofficeCountryEditComponent implements OnInit {
 
   form_group_country_edit: FormGroup;
   private data_edit_mode: DataEditMode;
+  edit_mode_heading = 'Edit';
 
   constructor(
     private countryService: CountryService,
@@ -24,6 +25,7 @@ export class BackofficeCountryEditComponent implements OnInit {
     private activated_route: ActivatedRoute,
   ) {
     this.data_edit_mode = DataEditMode.new;
+    this.edit_mode_heading = 'Add new';
   }
 
   ngOnInit() {
