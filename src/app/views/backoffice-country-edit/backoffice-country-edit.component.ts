@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CountryService } from '../../services/country.service';
 import { Country } from 'src/app/classes/country';
@@ -21,15 +20,15 @@ export class BackofficeCountryEditComponent implements OnInit {
 
   constructor(
     private countryService: CountryService,
-    private location: Location,
-    private route: ActivatedRoute,
+    private router: Router,
+    private activated_route: ActivatedRoute,
   ) {
     this.data_edit_mode = DataEditMode.new;
   }
 
   ngOnInit() {
 
-    let _country_id = this.route.snapshot.paramMap.get('id');
+    let _country_id = this.activated_route.snapshot.paramMap.get('id');
     if (_country_id) {
       console.log('setting edit mode for id : ' + _country_id);
       this.data_edit_mode = DataEditMode.edit;
@@ -48,7 +47,7 @@ export class BackofficeCountryEditComponent implements OnInit {
   }
 
   cancel_button_clicked() {
-    this.location.back();
+    this.router.navigate(['../'], {relativeTo: this.activated_route});
   }
 
   submit_button_clicked() {
@@ -61,7 +60,8 @@ export class BackofficeCountryEditComponent implements OnInit {
 
     if (this.data_edit_mode === DataEditMode.new) {
       this.countryService.addCountry(country).subscribe(success => {
-        console.log('success: ' + success);
+        // console.log('success: ' + success);
+        this.router.navigate(['../'], {relativeTo: this.activated_route});
       },
         error => {
           console.log('error: ' + JSON.stringify(error));
