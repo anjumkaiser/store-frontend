@@ -6,7 +6,7 @@ import { Product } from '../../classes/product';
 
 @Component({
   selector: 'app-backoffice-product-list',
-  templateUrl: './backoffice-product-list.component.html',
+  templateUrl: './backoffice-product-list.component.pug',
   styleUrls: ['./backoffice-product-list.component.css']
 })
 export class BackofficeProductListComponent implements OnInit {

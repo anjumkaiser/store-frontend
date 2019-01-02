@@ -9,7 +9,7 @@ import { AuthUser, AuthenticationService } from '../../services/authentication.s
 
 @Component({
   selector: 'app-authenticate',
-  templateUrl: './authenticate.component.html',
+  templateUrl: './authenticate.component.pug',
   styleUrls: ['./authenticate.component.css']
 })
 export class AuthenticateComponent implements OnInit {

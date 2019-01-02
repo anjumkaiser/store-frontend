@@ -10,7 +10,7 @@ enum DataEditMode { new, edit }
 
 @Component({
   selector: 'app-backoffice-country-edit',
-  templateUrl: './backoffice-country-edit.component.html',
+  templateUrl: './backoffice-country-edit.component.pug',
   styleUrls: ['./backoffice-country-edit.component.css']
 })
 export class BackofficeCountryEditComponent implements OnInit {

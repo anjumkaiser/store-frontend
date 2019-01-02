@@ -8,7 +8,7 @@ import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-backoffice-product-edit',
-  templateUrl: './backoffice-product-edit.component.html',
+  templateUrl: './backoffice-product-edit.component.pug',
   styleUrls: ['./backoffice-product-edit.component.css']
 })
 export class BackofficeProductEditComponent implements OnInit {

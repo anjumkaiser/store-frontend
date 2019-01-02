@@ -15,7 +15,7 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-backoffice-country-list',
-  templateUrl: './backoffice-country-list.component.html',
+  templateUrl: './backoffice-country-list.component.pug',
   styleUrls: ['./backoffice-country-list.component.css']
 })
 export class BackofficeCountryListComponent implements OnInit {
