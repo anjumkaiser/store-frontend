@@ -2,7 +2,7 @@ div.main
     div
         h1 {{edit_mode_heading}} country
     form([formGroup]="form_group_country_edit")
-        div
+        div([hidden]="edit_mode_heading==='Add new'")
             mat-form-field
                 mat-label(for="country_id") Id
                 input(formControlName="country_id", readonly, matInput)
@@ -15,6 +15,6 @@ div.main
                 mat-label(for="country_name") Name
                 input(placeholder="Country Name", formControlName="country_name", required, matInput)
         div
-            span: button(mat-button, type="submit", [disabled]="!this.form_group_country_edit.valid", (click)="submit_button_clicked()") Submit
-            span: button(mat-button, type="cancel", (click)="cancel_button_clicked()") Cancel
+            span: button(mat-button, type="submit", [disabled]="!this.form_group_country_edit.valid || buttons_disabled", (click)="submit_button_clicked()") Submit
+            span: button(mat-button, type="cancel", [disabled]="buttons_disabled", (click)="cancel_button_clicked()") Cancel
         

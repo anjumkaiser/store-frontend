@@ -19,6 +19,7 @@ export class BackofficeCountryEditComponent implements OnInit {
   form_group_country_edit: FormGroup;
   private data_edit_mode: DataEditMode;
   edit_mode_heading = 'Edit';
+  buttons_disabled = false;
 
   constructor(
     private countryService: CountryService,
@@ -41,12 +42,12 @@ export class BackofficeCountryEditComponent implements OnInit {
     }
 
     this.form_group_country_edit = new FormGroup({
-      country_id: new FormControl({ value: _country_id, disabled: true }),
+      country_id: new FormControl(),
       country_code: new FormControl(),
       country_name: new FormControl(),
     });
 
-    // this.form_group_country_edit.controls['country_id'].patchValue();
+    this.form_group_country_edit.controls['country_id'].setValue(_country_id);
 
   }
 
@@ -63,13 +64,18 @@ export class BackofficeCountryEditComponent implements OnInit {
       this.form_group_country_edit.value.country_name
     );
 
+    this.buttons_disabled = true;
+
     if (this.data_edit_mode === DataEditMode.new) {
-      this.countryService.addCountry(country).subscribe(success => {
-        // console.log('success: ' + success);
-        // this.router.navigate(['../'], {relativeTo: this.activated_route});
-        this.location.back();
-      },
+      this.countryService.addCountry(country).subscribe(
+        success => {
+          this.buttons_disabled = false;
+          // console.log('success: ' + success);
+          // this.router.navigate(['../'], {relativeTo: this.activated_route});
+          this.location.back();
+        },
         error => {
+          this.buttons_disabled = false;
           console.log('error: ' + JSON.stringify(error));
         });
     }
