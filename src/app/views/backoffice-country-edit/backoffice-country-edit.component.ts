@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CountryService } from '../../services/country.service';
 import { Country } from 'src/app/classes/country';
@@ -23,6 +24,7 @@ export class BackofficeCountryEditComponent implements OnInit {
     private countryService: CountryService,
     private router: Router,
     private activated_route: ActivatedRoute,
+    private location: Location,
   ) {
     this.data_edit_mode = DataEditMode.new;
     this.edit_mode_heading = 'Add new';
@@ -49,7 +51,8 @@ export class BackofficeCountryEditComponent implements OnInit {
   }
 
   cancel_button_clicked() {
-    this.router.navigate(['../'], {relativeTo: this.activated_route});
+    // this.router.navigate(['../'], {relativeTo: this.activated_route});
+    this.location.back();
   }
 
   submit_button_clicked() {
@@ -63,7 +66,8 @@ export class BackofficeCountryEditComponent implements OnInit {
     if (this.data_edit_mode === DataEditMode.new) {
       this.countryService.addCountry(country).subscribe(success => {
         // console.log('success: ' + success);
-        this.router.navigate(['../'], {relativeTo: this.activated_route});
+        // this.router.navigate(['../'], {relativeTo: this.activated_route});
+        this.location.back();
       },
         error => {
           console.log('error: ' + JSON.stringify(error));
