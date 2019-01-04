@@ -26,10 +26,7 @@ export class BackofficeCountryEditComponent implements OnInit {
     private router: Router,
     private activated_route: ActivatedRoute,
     private location: Location,
-  ) {
-    this.data_edit_mode = DataEditMode.new;
-    this.edit_mode_heading = 'Add new';
-  }
+  ) { }
 
   ngOnInit() {
 
@@ -37,7 +34,10 @@ export class BackofficeCountryEditComponent implements OnInit {
     if (_country_id) {
       console.log('setting edit mode for id : ' + _country_id);
       this.data_edit_mode = DataEditMode.edit;
+      this.edit_mode_heading = 'Edit';
     } else {
+      this.data_edit_mode = DataEditMode.new;
+    this.edit_mode_heading = 'Add new';
       _country_id = UUID.UUID();
     }
 
