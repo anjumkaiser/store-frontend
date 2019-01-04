@@ -9,8 +9,6 @@ import {
 
 
 import { SelectionModel } from '@angular/cdk/collections';
-import { merge, Observable, of as observableOf, Subscriber, } from 'rxjs';
-import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 
 
 @Component({
@@ -20,7 +18,7 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 })
 export class BackofficeCountryListComponent implements OnInit {
 
-  displayedColumns: string[] = ['code', 'name', 'id'];
+  displayedColumns: string[] = ['id', 'code', 'name', 'buttons'];
   private resultsLength = 0;
   private isLoadingResults = false;
   private isRateLimitReached = false;
@@ -32,7 +30,7 @@ export class BackofficeCountryListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    private countryService: CountryService
+    private countryService: CountryService,
   ) { }
 
   ngOnInit() {
@@ -60,6 +58,10 @@ export class BackofficeCountryListComponent implements OnInit {
     const numSelected = this.selection.selected.length;
     const numRows = this.countries.data.length;
     return numSelected === numRows;
+  }
+
+  removeCountry(country) {
+    console.log( 'removeCountry ' + JSON.stringify(country) );
   }
 
 }
