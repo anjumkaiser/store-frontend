@@ -6,7 +6,7 @@ import { CountryService } from '../../services/country.service';
 import { Country } from 'src/app/classes/country';
 import { UUID } from 'angular2-uuid';
 
-enum DataEditMode { new, edit }
+const enum DataEditMode { new, edit }
 
 
 @Component({
@@ -30,25 +30,30 @@ export class BackofficeCountryEditComponent implements OnInit {
 
   ngOnInit() {
 
-    let _country_id = this.activated_route.snapshot.paramMap.get('id');
-    if (_country_id) {
-      console.log('setting edit mode for id : ' + _country_id);
-      this.data_edit_mode = DataEditMode.edit;
-      this.edit_mode_heading = 'Edit';
-    } else {
-      this.data_edit_mode = DataEditMode.new;
-    this.edit_mode_heading = 'Add new';
-      _country_id = UUID.UUID();
-    }
-
     this.form_group_country_edit = new FormGroup({
       country_id: new FormControl(),
       country_code: new FormControl(),
       country_name: new FormControl(),
     });
 
-    this.form_group_country_edit.controls['country_id'].setValue(_country_id);
 
+
+    let _country_id = this.activated_route.snapshot.paramMap.get('id');
+    if (_country_id) {
+      this.data_edit_mode = DataEditMode.edit;
+      this.edit_mode_heading = 'Edit';
+      this.form_group_country_edit.controls['country_id'].setValue(_country_id);
+      this.countryService.getCountry(_country_id).subscribe(e => {
+        this.form_group_country_edit.controls['country_id'].setValue(e.id);
+        this.form_group_country_edit.controls['country_code'].setValue(e.code);
+        this.form_group_country_edit.controls['country_name'].setValue(e.name);
+      });
+    } else {
+      this.data_edit_mode = DataEditMode.new;
+      this.edit_mode_heading = 'Add new';
+      _country_id = UUID.UUID();
+      this.form_group_country_edit.controls['country_id'].setValue(_country_id);
+    }
   }
 
   cancel_button_clicked() {
@@ -78,6 +83,20 @@ export class BackofficeCountryEditComponent implements OnInit {
           this.buttons_disabled = false;
           console.log('error: ' + JSON.stringify(error));
         });
+    } else if (this.data_edit_mode === DataEditMode.edit) {
+      this.countryService.editCountry(country).subscribe(
+        success => {
+          this.buttons_disabled = false;
+          this.location.back();
+        },
+        error => {
+          this.buttons_disabled = false;
+          console.log('error: ' + JSON.stringify(error));
+        }
+      );
+
+    } else {
+      this.buttons_disabled = false;
     }
 
   }
