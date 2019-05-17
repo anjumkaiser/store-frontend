@@ -9,9 +9,7 @@ export class AuthUser {
 }
 
 class AuthResponse {
-  success: boolean;
-  data: string;
-  message: string;
+  token: string;
 }
 
 @Injectable({
@@ -38,10 +36,10 @@ export class AuthenticationService {
 
 
   authenticate(auth_user: AuthUser) {
-    const http_url = 'api/backoffice/authenticate';
-    const http_options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    const http_url = 'api/authenticate/password';
+    const http_options = { headers: new HttpHeaders({'Accept': 'application/json'})};
     this.http.post<AuthResponse>(http_url, auth_user, http_options).subscribe((resp: AuthResponse) => {
-      localStorage.setItem('token', resp.data);
+      localStorage.setItem('token', resp.token);
       this.loggedIn.next(true);
     }, (e: HttpErrorResponse) => {
       localStorage.removeItem('token')
