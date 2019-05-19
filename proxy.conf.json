@@ -2,7 +2,7 @@
 	"/api": {
 		"target": "https://localhost:4000/",
 		"pathRewrite": {
-			"^/api": "http://localhostr:4000"
+			"^/api": "https://localhost:4000"
 		},
 		"secure": false,
 		"changeOrigin": true,
