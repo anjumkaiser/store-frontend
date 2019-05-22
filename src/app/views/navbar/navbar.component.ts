@@ -16,6 +16,8 @@ export class NavbarComponent implements OnInit {
   logo_alt_text: String;
 
   isLoggedIn: Boolean = false;
+  user_name: string = 'user';
+  display_name: string = 'User';
 
   constructor(
     private authService: AuthenticationService,
@@ -28,6 +30,14 @@ export class NavbarComponent implements OnInit {
     this.logo_alt_text = 'Logo';
     this.authService.isLoggedIn().subscribe((value) => {
       this.isLoggedIn = value;
+
+      this.authService.user.subscribe(x => {
+
+        if (x) {
+        this.user_name = x.name;
+        this.display_name = x.display_name;
+        }
+      });
     });
   }
 
