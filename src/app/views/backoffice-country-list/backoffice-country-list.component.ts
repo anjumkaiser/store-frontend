@@ -13,7 +13,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-backoffice-country-list',
-  templateUrl: './backoffice-country-list.component.pug',
+  templateUrl: './backoffice-country-list.component.html',
   styleUrls: ['./backoffice-country-list.component.css']
 })
 export class BackofficeCountryListComponent implements OnInit {
