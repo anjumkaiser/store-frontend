@@ -4,13 +4,15 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { BehaviorSubject, Observable } from 'rxjs';
 import { KEYUTIL, KJUR } from 'jsrsasign';
 
+const AUTH_TOKEN = 'auth_token';
+
 export class AuthUser {
   username: string;
   password: string;
 }
 
 class AuthResponse {
-  token: string;
+  auth_token: string;
 }
 
 @Injectable({
@@ -26,10 +28,10 @@ export class AuthenticationService {
     private router: Router,
     private http: HttpClient,
   ) {
-    if (!!localStorage.getItem('token')) {
+    if (!!this.getAuthToken()) {
       this.loggedIn.next(true);
     } else {
-      this.loggedIn.next(false);
+      this.removeTokens();
     }
 
     if (this.publicKey == null) {
@@ -60,32 +62,49 @@ export class AuthenticationService {
         return;
       }
 
-      const pubkey = KEYUTIL.getKey(this.publicKey);
-      const isValid = KJUR.jws.JWS.verifyJWT(resp.token, pubkey, {
-        alg: ['RS256', 'RS512'],
-      });
+      if (!resp.auth_token) {
+        return;
+      }
 
-      if (isValid) {
-        const  parsedJWT = KJUR.jws.JWS.parse(resp.token);
+      const isAuthValid = this.validateJWT(resp.auth_token);
+      if (isAuthValid) {
+        const  parsedJWT = KJUR.jws.JWS.parse(resp.auth_token);
         this.user.next(parsedJWT.payloadObj.pvt.user);
-        localStorage.setItem('token', resp.token);
+        localStorage.setItem(AUTH_TOKEN, resp.auth_token);
         this.loggedIn.next(true);
+      } else {
+        this.removeTokens();
       }
 
     }, (e: HttpErrorResponse) => {
-      localStorage.removeItem('token')
-      this.loggedIn.next(false);
+      this.removeTokens();
     });
   }
 
+
+
   deauthenticate() {
-    localStorage.removeItem('token');
+    this.removeTokens();
+  }
+
+
+  validateJWT(token): boolean {
+    const pubkey = KEYUTIL.getKey(this.publicKey);
+    const isValid: boolean = KJUR.jws.JWS.verifyJWT(token, pubkey, {
+      alg: ['RS256', 'RS512'],
+    });
+    return isValid;
+  }
+
+
+  removeTokens() {
+    localStorage.removeItem(AUTH_TOKEN);
     this.loggedIn.next(false);
   }
 
 
-  getToken() {
-    return localStorage.getItem('token');
+  getAuthToken() {
+    return localStorage.getItem(AUTH_TOKEN);
   }
 
 }
