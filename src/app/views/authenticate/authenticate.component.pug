@@ -16,25 +16,7 @@ div.container
                 a.twitter_button(mat-raised-button, routerLink='/authenticate/twitter')
                     i.fa.fa-twitter
                     |  Twitter
-    mat-card
-        mat-card-header
-            mat-card-title
-                h5 or Sign in locally
-        mat-card-content
-            form([formGroup]="formGroupLogin")
-                div
-                    mat-form-field
-                        mat-label Username
-                        input(type="text", matInput, mat-form-field-control, required, formControlName="username", #username)
-                        mat-hint Min {{minusernamelength}} characters
-                        mat-hint(align="end") {{+username.value?.length}}
-                div
-                    mat-form-field
-                        mat-label Password
-                        input([type]="password_hidden ? 'password' : 'text'", matInput, mat-form-field, required, formControlName="password", #password)
-                        i(matSuffix, class="fa {{password_hidden ? 'fa-eye' : 'fa-eye-slash'}}", (click)="toggle_password_visibility()")
-                        mat-hint Min {{minpasswordlength}} characters
-                        mat-hint(align="end") {{+password.value?.length}}
-        mat-card-actions
-            button(type="submit", mat-button, [disabled]="!formGroupLogin.valid || isButtonLocked", color="primary", (click)="onSubmit()") Login
-            button(type="cancel", mat-button, [disabled]="isButtonLocked", (click)="onCancel()") Clear
+            div.cardbutton
+                a.password_button(mat-raised-button, routerLink='/authenticate/password')
+                    i.fa.fa-user-secret
+                    |  Password

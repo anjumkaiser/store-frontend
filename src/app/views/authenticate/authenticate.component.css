@@ -37,6 +37,13 @@ a:hover {
 }
 
 
+.password_button {
+    background-color: #00AA00;
+    color: #FFFFFF !important;
+    width: 200px;
+}
+
+
 .cardbutton {
     padding: 3px;
 }

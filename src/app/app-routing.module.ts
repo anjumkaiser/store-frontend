@@ -8,7 +8,10 @@ import { UserProfileComponent } from './views/user-profile/user-profile.componen
 
 import { AuthenticationGuard } from './guards/authentication.guard';
 
+import { AuthenticatePasswordComponent } from './views/authenticate-password/authenticate-password.component';
+
 const routes: Routes = [
+  { path: 'authenticate/password', component: AuthenticatePasswordComponent },
   { path: 'authenticate/:path', component: AuthenticateComponent },
   { path: 'authenticate', component: AuthenticateComponent },
   { path: 'product', component: ProductListComponent },
