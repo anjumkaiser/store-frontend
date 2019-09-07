@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +22,15 @@ import { UserProfileComponent } from './views/user-profile/user-profile.componen
 
 import { AuthenticationService } from './services/authentication.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AppConfigService } from './services/app-config.service'; 
+
+
+const initializerConfigFn = (appConfig: AppConfigService) => {
+  return () => {
+    return appConfig.loadAppConfig();
+  };
+};
+
 
 @NgModule({
   declarations: [
@@ -45,6 +54,13 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     BarRatingModule,
   ],
   providers: [
+    AppConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializerConfigFn,
+        multi: true,
+        deps: [AppConfigService],
+    },
     AuthenticationService,
     {
       provide: HTTP_INTERCEPTORS,
