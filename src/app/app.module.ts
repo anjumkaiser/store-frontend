@@ -58,8 +58,8 @@ const initializerConfigFn = (appConfig: AppConfigService) => {
     {
       provide: APP_INITIALIZER,
       useFactory: initializerConfigFn,
-        multi: true,
-        deps: [AppConfigService],
+      multi: true,
+      deps: [AppConfigService],
     },
     AuthenticationService,
     {
