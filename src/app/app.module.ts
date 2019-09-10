@@ -25,7 +25,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AppConfigService } from './services/app-config.service'; 
 
 
-const loadConfigurations = (appConfig: AppConfigService) => {
+const initializerConfigFn = (appConfig: AppConfigService) => {
   return () => {
     return appConfig.loadAppConfig();
   };
@@ -57,7 +57,7 @@ const loadConfigurations = (appConfig: AppConfigService) => {
     AppConfigService,
     {
       provide: APP_INITIALIZER,
-      useFactory: loadConfigurations,
+      useFactory: initializerConfigFn,
       multi: true,
       deps: [AppConfigService],
     },
