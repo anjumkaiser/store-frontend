@@ -33,7 +33,7 @@ function initializerConfigFn(http: HttpClient, config: AppConfigService): (() =>
 }
 
 
-export function provideConfig(appConfig: AppConfigService) {
+function provideConfig(appConfig: AppConfigService) {
   return appConfig.getConfig();
 }
 
