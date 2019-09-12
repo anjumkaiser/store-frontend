@@ -18,7 +18,6 @@ export class AppConfigService {
       return  new Promise<boolean>((resolve: (a: boolean) => void): void => {
         this.http.get('/api/config').pipe(
           map((cfg: any) => {
-            console.log('Google oauth2 key: [' + cfg.google_oauth2_id + ']');
             this.appConfig = new AuthServiceConfig([
               {
                 id: GoogleLoginProvider.PROVIDER_ID,
@@ -30,23 +29,6 @@ export class AppConfigService {
         ).subscribe();
       });
     };
-
-    /*
-    return this.http.get('/api/config').pipe(map((cfg: any) => {
-      console.log('Google oauth2 key: [' + cfg.google_oauth2_id + ']');
-      this.appConfig = cfg;
-      resolve(true);
-    }),
-    catchError((x: { status: number }, caught: Observable<void>): ObservableInput<{}> => {
-      if (x.status !== 404) {
-        resolve(false);
-      }
-      this.appConfig = null;
-      resolve(false);
-      return of({});
-    })
-    ).subscribe();
-    */
   }
 
 
