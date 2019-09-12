@@ -24,7 +24,6 @@ export class ProductListComponent implements OnInit {
 
 
   add_to_cart(product: Product): void {
-    //console.log('X');
     console.log(product);
   }
 
