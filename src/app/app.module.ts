@@ -3,7 +3,7 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpErrorResponse, HttpClient} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material.module';
@@ -20,16 +20,22 @@ import { AuthenticatePasswordComponent } from './views/authenticate-password/aut
 import { NavbarComponent } from './views/navbar/navbar.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 
+import { AuthService as AXSocialAuthService } from 'angularx-social-login';
+import { AuthServiceConfig } from 'angularx-social-login';
+
 import { AuthenticationService } from './services/authentication.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-import { AppConfigService } from './services/app-config.service'; 
+import { AppConfigService } from './services/app-config.service';
 
 
-const initializerConfigFn = (appConfig: AppConfigService) => {
-  return () => {
-    return appConfig.loadAppConfig();
-  };
-};
+function initializerConfigFn(http: HttpClient, config: AppConfigService): (() => Promise<boolean>) {
+  return config.loadAppConfig();
+}
+
+
+export function provideConfig(appConfig: AppConfigService) {
+  return appConfig.getConfig();
+}
 
 
 @NgModule({
@@ -59,8 +65,14 @@ const initializerConfigFn = (appConfig: AppConfigService) => {
       provide: APP_INITIALIZER,
       useFactory: initializerConfigFn,
       multi: true,
-      deps: [AppConfigService],
+      deps: [HttpClient, AppConfigService],
     },
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig,
+      deps: [AppConfigService]
+    } ,
+    AXSocialAuthService,
     AuthenticationService,
     {
       provide: HTTP_INTERCEPTORS,
