@@ -28,12 +28,12 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AppConfigService } from './services/app-config.service';
 
 
-function initializerConfigFn(http: HttpClient, config: AppConfigService): (() => Promise<boolean>) {
+export function initializerConfigFn(http: HttpClient, config: AppConfigService): (() => Promise<boolean>) {
   return config.loadAppConfig();
 }
 
 
-function provideConfig(appConfig: AppConfigService) {
+export function provideConfig(appConfig: AppConfigService) {
   return appConfig.getConfig();
 }
 
