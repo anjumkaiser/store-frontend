@@ -24,7 +24,7 @@
     "@angular/router": "^8.2.11",
     "angular-oauth2-oidc": "^8.0.4",
     "angular2-uuid": "^1.1.1",
-    "angularx-social-login": "^1.2.7",
+    "angularx-social-login": "^2.1.1",
     "bulma": "^0.7.5",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
