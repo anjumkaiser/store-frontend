@@ -5,7 +5,7 @@ div.container
                 h5 Sign in with
         mat-card-content
             div.cardbutton
-                a.google_button(mat-raised-button, routerLink='/authenticate/google')
+                a.google_button(mat-raised-button, (click)='googleAuthenticate()')
                     i.fa.fa-google
                     |  Google
             div.cardbutton

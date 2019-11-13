@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { catchError, mapTo, tap } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { KEYUTIL, KJUR } from 'jsrsasign';
+
+import { AppConfigService } from './app-config.service';
 
 const AUTH_TOKEN = 'auth_token';
 const REFRESH_TOKEN = 'refresh_token';
@@ -30,6 +32,7 @@ export class AuthenticationService {
   constructor(
     private router: Router,
     private http: HttpClient,
+    private appCfg: AppConfigService,
   ) {
     if (!!this.getAuthToken() && !!this.getRefreshToken()) {
       this.loggedIn.next(true);

@@ -17,11 +17,9 @@ import { ProductListComponent } from './views/product-list/product-list.componen
 import { ProductDetailComponent } from './views/product-detail/product-detail.component';
 import { AuthenticateComponent } from './views/authenticate/authenticate.component';
 import { AuthenticatePasswordComponent } from './views/authenticate-password/authenticate-password.component';
+import { AuthenticateCallbackComponent } from './views/authenticate-callback/authenticate-callback.component';
 import { NavbarComponent } from './views/navbar/navbar.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
-
-import { AuthService as AXSocialAuthService } from 'angularx-social-login';
-import { AuthServiceConfig } from 'angularx-social-login';
 
 import { AuthenticationService } from './services/authentication.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
@@ -45,6 +43,7 @@ export function provideConfig(appConfig: AppConfigService) {
     ProductDetailComponent,
     AuthenticateComponent,
     AuthenticatePasswordComponent,
+    AuthenticateCallbackComponent,
     NavbarComponent,
     UserProfileComponent,
   ],
@@ -68,11 +67,10 @@ export function provideConfig(appConfig: AppConfigService) {
       deps: [HttpClient, AppConfigService],
     },
     {
-      provide: AuthServiceConfig,
+      provide: {},
       useFactory: provideConfig,
       deps: [AppConfigService]
     } ,
-    AXSocialAuthService,
     AuthenticationService,
     {
       provide: HTTP_INTERCEPTORS,

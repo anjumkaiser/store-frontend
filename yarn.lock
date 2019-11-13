@@ -1315,25 +1315,10 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
-angular-oauth2-oidc@^8.0.4:
-  version "8.0.4"
-  resolved "https://registry.yarnpkg.com/angular-oauth2-oidc/-/angular-oauth2-oidc-8.0.4.tgz#604aaa0b9870fb2c8a5ba2e562e3e49da86e6ecc"
-  integrity sha512-7/3niJBqD7rnElcW+SudE36g7zMWChW4gSq7NpJSzDA4aQadBgvg0hn317MfPm9tpYGrpE3G/z2NMnbzek4TMA==
-  dependencies:
-    jsrsasign "^8.0.12"
-    tslib "^1.9.0"
-
 angular2-uuid@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/angular2-uuid/-/angular2-uuid-1.1.1.tgz#72f03cd532b7f40032eb1ecfb9f8457384be956e"
   integrity sha1-cvA81TK39AAy6x7PufhFc4S+lW4=
-
-angularx-social-login@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/angularx-social-login/-/angularx-social-login-2.1.1.tgz#2287b8825a7b17490553f4f92224980937f8188e"
-  integrity sha512-iGIsiUpPkcKr09gNez5oHqspD2uvC9GBDYlSGPNjXApoLQUd94dgF0R0vLPv974LE4eon1gNPfY/26sU5G9tzw==
-  dependencies:
-    typescript "^3.5.3"
 
 ansi-colors@4.1.1:
   version "4.1.1"
@@ -8016,11 +8001,6 @@ typescript@3.5.3, typescript@~3.5.3:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.5.3.tgz#c830f657f93f1ea846819e929092f5fe5983e977"
   integrity sha512-ACzBtm/PhXBDId6a6sDJfroT2pOWt/oOnk4/dElG5G33ZL776N3Y6/6bKZJBFpd+b05F3Ct9qDjMeJmRWtE2/g==
-
-typescript@^3.5.3:
-  version "3.6.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.4.tgz#b18752bb3792bc1a0281335f7f6ebf1bbfc5b91d"
-  integrity sha512-unoCll1+l+YK4i4F8f22TaNVPRHcD9PA3yCuZ8g5e0qGqlVlJ/8FSateOLLSagn+Yg5+ZwuPkL8LFUc0Jcvksg==
 
 uglify-js@^3.1.4:
   version "3.4.9"
