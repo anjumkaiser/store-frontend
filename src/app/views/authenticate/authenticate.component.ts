@@ -35,7 +35,8 @@ export class AuthenticateComponent implements OnInit {
     let url = 'https://accounts.google.com/o/oauth2/v2/auth?';
     url += 'client_id=' + this.appCfg.getConfig().google_oauth2_id;
     url += '&response_type=code';
-    url += '&scope=' + encodeURIComponent('openid profile email');
+    url += '&access_type=offline';
+    url += '&scope=' + encodeURIComponent('profile email openid');
     url += '&code_challenge_method=S256';
     url += '&code_challenge=' + encodeURIComponent(code_challenge);
     url += '&state=' + encodeURIComponent(pkce_state);
