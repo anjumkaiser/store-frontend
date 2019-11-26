@@ -61,7 +61,7 @@ export class AuthenticatePasswordComponent implements OnInit {
     auth_user.username = this.formGroupLogin.value.username;
     auth_user.password = this.formGroupLogin.value.password;
 
-    this.authService.authenticate(auth_user);
+    this.authService.authenticate_password(auth_user);
   }
 
   onCancel() {

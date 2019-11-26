@@ -59,7 +59,7 @@ export class AuthenticationService {
   }
 
 
-  authenticate(auth_user: AuthUser) {
+  authenticate_password(auth_user: AuthUser) {
     const http_url = 'api/authenticate/password';
     const http_options = { headers: new HttpHeaders({'Accept': 'application/json'})};
     this.http.post<AuthResponse>(http_url, auth_user, http_options).subscribe((resp: AuthResponse) => {
