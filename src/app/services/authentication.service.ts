@@ -43,11 +43,13 @@ export class AuthenticationService {
     if (this.publicKey == null) {
       this.getKey();
     }
-   }
+  }
+
 
   isLoggedIn(): BehaviorSubject<boolean> {
     return this.loggedIn;
   }
+
 
   private getKey() {
     this.publicKey = null;
@@ -55,6 +57,52 @@ export class AuthenticationService {
       resp.text().then(x => {
         this.publicKey = x;
       });
+    });
+  }
+
+
+  authenticate_google_oidc(oidc_code, pkce_code_verifier) {
+    const http_url = 'api/authenticate/google/authorize';
+    const http_options = { headers: new HttpHeaders({'Accept': 'application/json'})};
+    const http_data = {
+      code: oidc_code,
+      verifier: pkce_code_verifier,
+    };
+
+    this.http.post(http_url, http_data, http_options).subscribe( (resp: any) => {
+
+      if (!this.publicKey) {
+        return;
+      }
+
+      if (!resp.auth_token) {
+        return;
+      }
+
+      if (!resp.refresh_token) {
+        return;
+      }
+
+      const isAuthValid = this.validateJWT(resp.auth_token);
+      if (isAuthValid) {
+        const  parsedJWT = KJUR.jws.JWS.parse(resp.auth_token);
+        this.user.next(parsedJWT.payloadObj.pvt.user);
+        localStorage.setItem(AUTH_TOKEN, resp.auth_token);
+      }
+
+      const isRefreshValid = this.validateJWT(resp.refresh_token);
+      if (isRefreshValid) {
+        localStorage.setItem(REFRESH_TOKEN, resp.refresh_token);
+      }
+
+      if (isRefreshValid && isAuthValid) {
+        this.loggedIn.next(true);
+      } else {
+        this.removeTokens();
+      }
+
+    }, (e: HttpErrorResponse) => {
+      this.removeTokens();
     });
   }
 
@@ -98,7 +146,6 @@ export class AuthenticationService {
       this.removeTokens();
     });
   }
-
 
 
   deauthenticate() {

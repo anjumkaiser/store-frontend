@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { AuthenticationService } from '../../services/authentication.service';
 
 import { GOOGLE_PKCE_VERIFIER, GOOGLE_PKCE_STATE } from '../authenticate/authenticate.component';
 
@@ -14,7 +15,7 @@ export class AuthenticateCallbackComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private http: HttpClient,
+    private authService: AuthenticationService
     ) { }
 
   ngOnInit() {
@@ -31,16 +32,7 @@ export class AuthenticateCallbackComponent implements OnInit {
     const pkce_code_verifier = localStorage.getItem(GOOGLE_PKCE_VERIFIER);
     const oidc_code =  paramMap.get("code");
 
-    const http_url = 'api/authenticate/google/authorize';
-    const http_options = { headers: new HttpHeaders({'Accept': 'application/json'})};
-    const http_data = {
-      code: oidc_code,
-      verifier: pkce_code_verifier,
-    };
-
-    this.http.post(http_url, http_data, http_options).subscribe( (x: any) => {
-      console.log(`x [{x}]`);
-    });
+        this.authService.authenticate_google_oidc(oidc_code, pkce_code_verifier);
   }
 
 }
