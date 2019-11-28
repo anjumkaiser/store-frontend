@@ -1,9 +1,7 @@
 import { Component, OnInit, ɵALLOW_MULTIPLE_PLATFORMS } from '@angular/core';
 import { Location } from '@angular/common';
 import { AppConfigService } from '../../services/app-config.service';
-
-export const GOOGLE_PKCE_STATE: string = 'google_pkce_state';
-export const GOOGLE_PKCE_VERIFIER: string = 'google_pkce_verifier';
+import { GOOGLE_PKCE_VERIFIER, GOOGLE_PKCE_STATE } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-authenticate',

@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthenticationService } from '../../services/authentication.service';
 
-import { GOOGLE_PKCE_VERIFIER, GOOGLE_PKCE_STATE } from '../authenticate/authenticate.component';
+import { GOOGLE_PKCE_VERIFIER, GOOGLE_PKCE_STATE } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-authenticate-callback',
@@ -21,21 +21,14 @@ export class AuthenticateCallbackComponent implements OnInit {
   ngOnInit() {
 
     const paramMap = this.route.snapshot.queryParamMap;
-    const urlParamState = paramMap.get("state");
-    const pkce_state = localStorage.getItem(GOOGLE_PKCE_STATE);
+    const oidc_state = paramMap.get('state');
+    const oidc_code =  paramMap.get('code');
 
-    if ( pkce_state !== urlParamState) {
+    if (this.authService.authenticate_google_oidc(oidc_code, oidc_state) === false) {
+      console.log('/authenicate')
       this.router.navigate(['/authenticate']);
-      return;
     }
 
-    const pkce_code_verifier = localStorage.getItem(GOOGLE_PKCE_VERIFIER);
-    const oidc_code =  paramMap.get("code");
-
-    this.authService.authenticate_google_oidc(oidc_code, pkce_code_verifier);
-
-    localStorage.removeItem(GOOGLE_PKCE_STATE);
-    localStorage.removeItem(GOOGLE_PKCE_VERIFIER);
   }
 
 }

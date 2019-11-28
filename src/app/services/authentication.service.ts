@@ -7,6 +7,9 @@ import { KEYUTIL, KJUR } from 'jsrsasign';
 
 import { AppConfigService } from './app-config.service';
 
+export const GOOGLE_PKCE_STATE = 'google_pkce_state';
+export const GOOGLE_PKCE_VERIFIER = 'google_pkce_verifier';
+
 const AUTH_TOKEN = 'auth_token';
 const REFRESH_TOKEN = 'refresh_token';
 
@@ -61,7 +64,17 @@ export class AuthenticationService {
   }
 
 
-  authenticate_google_oidc(oidc_code, pkce_code_verifier) {
+  authenticate_google_oidc(oidc_code, urlParamState): boolean {
+
+    const pkce_code_verifier = localStorage.getItem(GOOGLE_PKCE_VERIFIER);
+    const pkce_state = localStorage.getItem(GOOGLE_PKCE_STATE);
+    if (pkce_state !== urlParamState) {
+      console.log('pkce state not mached with oicd-state, exiting');
+      localStorage.removeItem(GOOGLE_PKCE_STATE);
+      localStorage.removeItem(GOOGLE_PKCE_VERIFIER);
+      return false;
+    }
+
     const http_url = 'api/authenticate/google/authorize';
     const http_options = { headers: new HttpHeaders({'Accept': 'application/json'})};
     const http_data = {
@@ -104,6 +117,10 @@ export class AuthenticationService {
     }, (e: HttpErrorResponse) => {
       this.removeTokens();
     });
+
+    localStorage.removeItem(GOOGLE_PKCE_STATE);
+    localStorage.removeItem(GOOGLE_PKCE_VERIFIER);
+    return true;
   }
 
 
@@ -184,6 +201,8 @@ export class AuthenticationService {
 
 
   removeTokens() {
+    //localStorage.removeItem(GOOGLE_PKCE_STATE);
+    //localStorage.removeItem(GOOGLE_PKCE_VERIFIER);
     localStorage.removeItem(AUTH_TOKEN);
     localStorage.removeItem(REFRESH_TOKEN);
     this.loggedIn.next(false);
