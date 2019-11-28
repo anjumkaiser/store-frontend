@@ -15,6 +15,8 @@ export class NavbarComponent implements OnInit {
   logo: String;
   logo_alt_text: String;
 
+
+  isAllowBackOffice: Boolean = false;
   isLoggedIn: Boolean = false;
   user_name: string = 'user';
   display_name: string = 'User';
@@ -36,6 +38,11 @@ export class NavbarComponent implements OnInit {
         if (x) {
         this.user_name = x.name;
         this.display_name = x.display_name;
+          for (const r of x.roles) {
+            if (r.role_name === 'Administrator' ) {
+              this.isAllowBackOffice = true;
+            }
+          }
         }
       });
     });

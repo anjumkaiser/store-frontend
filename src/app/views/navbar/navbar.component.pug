@@ -3,7 +3,7 @@ mat-toolbar
         img.logo(src='{{logo}}', alt="{{logo_alt_text}}")
     
     span {{title}}
-    button(mat-button, *ngIf="isLoggedIn", (click)="show_backoffice_dashboard()") Backoffice
+    button(mat-button, *ngIf="isAllowBackOffice", (click)="show_backoffice_dashboard()") Backoffice
     button(mat-button, (click)="do_checkout()") Check Out
     button(mat-button, *ngIf="!isLoggedIn", (click)="do_login()") Login 
     button(mat-button, *ngIf="isLoggedIn", [matMenuTriggerFor]="appMenu") {{ display_name }}
