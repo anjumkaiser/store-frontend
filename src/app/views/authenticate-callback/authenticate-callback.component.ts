@@ -32,7 +32,10 @@ export class AuthenticateCallbackComponent implements OnInit {
     const pkce_code_verifier = localStorage.getItem(GOOGLE_PKCE_VERIFIER);
     const oidc_code =  paramMap.get("code");
 
-        this.authService.authenticate_google_oidc(oidc_code, pkce_code_verifier);
+    this.authService.authenticate_google_oidc(oidc_code, pkce_code_verifier);
+
+    localStorage.removeItem(GOOGLE_PKCE_STATE);
+    localStorage.removeItem(GOOGLE_PKCE_VERIFIER);
   }
 
 }
