@@ -26,6 +26,12 @@ export class AuthenticateCallbackComponent implements OnInit {
 
     if (this.authService.authenticate_google_oidc(oidc_code, oidc_state) === false) {
       this.router.navigate(['/authenticate']);
+    } else {
+      this.authService.user.subscribe(x => {
+        if (x) {
+          this.router.navigate(['/']);
+        }
+      });
     }
 
   }
