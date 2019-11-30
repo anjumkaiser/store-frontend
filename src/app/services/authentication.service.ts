@@ -37,7 +37,12 @@ export class AuthenticationService {
     private http: HttpClient,
     private appCfg: AppConfigService,
   ) {
-    if (!!this.getAuthToken() && !!this.getRefreshToken()) {
+    const atk = this.getAuthToken();
+    const rtk = this.getRefreshToken();
+
+    if (!!atk && !!rtk) {
+      const parsedJWT = KJUR.jws.JWS.parse(atk);
+      this.user.next(parsedJWT.payloadObj.pvt.user);
       this.loggedIn.next(true);
     } else {
       this.removeTokens();
