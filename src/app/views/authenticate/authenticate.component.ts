@@ -20,6 +20,16 @@ export class AuthenticateComponent implements OnInit {
   }
 
 
+  async facebookAuthenticate() {
+
+  }
+
+
+  async twitterAuthenticate() {
+
+  }
+
+
   async googleAuthenticate() {
 
     const pkce_state = this.generateCodeVerifier();

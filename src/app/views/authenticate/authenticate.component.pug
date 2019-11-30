@@ -9,11 +9,11 @@ div.container
                     i.fa.fa-google
                     |  Google
             div.cardbutton
-                a.facebook_button(mat-raised-button, routerLink='/authenticate/facebook')
+                a.facebook_button(mat-raised-button, (click)='facebookAuthenticate()')
                     i.icon.fa.fa-facebook
                     |  Facebook
             div.cardbutton
-                a.twitter_button(mat-raised-button, routerLink='/authenticate/twitter')
+                a.twitter_button(mat-raised-button, (click)='twitterAuthenticate()')
                     i.fa.fa-twitter
                     |  Twitter
             div.cardbutton
