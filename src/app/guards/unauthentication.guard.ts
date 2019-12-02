@@ -24,7 +24,7 @@ export class UnAuthenticationGuard implements CanActivate {
     }
 
     const params = next.url.toString();
-    this.router.navigate(['profile',  params]);
+    //this.router.navigate(['profile',  params]);
     return true;
 
   }
