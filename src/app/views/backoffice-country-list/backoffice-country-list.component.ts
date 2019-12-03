@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { CountryService } from 'src/app/services/country.service';
 import { ICountry } from 'src/app/interfaces/icountry';
 import {
@@ -16,7 +16,7 @@ import { SelectionModel } from '@angular/cdk/collections';
   templateUrl: './backoffice-country-list.component.html',
   styleUrls: ['./backoffice-country-list.component.css']
 })
-export class BackofficeCountryListComponent implements OnInit {
+export class BackofficeCountryListComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['id', 'code', 'name', 'buttons'];
   private resultsLength = 0;
@@ -33,7 +33,7 @@ export class BackofficeCountryListComponent implements OnInit {
     private countryService: CountryService,
   ) { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.countryService.getCountries().subscribe((e) => {
       this.countries = new MatTableDataSource(e);
       this.resultsLength = e.length;
