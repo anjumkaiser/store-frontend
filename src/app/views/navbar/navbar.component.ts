@@ -64,6 +64,7 @@ export class NavbarComponent implements OnInit {
 
   do_logout(): void {
     this.authService.deauthenticate();
+    this.isAllowBackOffice = false;
     this.router.navigate(['/']);
   }
 

@@ -172,6 +172,7 @@ export class AuthenticationService {
 
   deauthenticate() {
     this.removeTokens();
+    localStorage.clear();
   }
 
 
