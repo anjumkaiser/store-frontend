@@ -33,13 +33,13 @@ export class CountryService {
   }
 
   editCountry(country: Country) {
-    const http_url = 'api/country/edit/' + country.id;
+    const http_url = 'api/country/' + country.id;
     const http_options = { headers: new HttpHeaders({'Content-Type': 'application/json'}) };
     return this.http.put<ICountry>(http_url, country, http_options);
   }
 
   deleteCountry(country: Country) {
-    const http_url = 'api/country/delete/' + country.id;
+    const http_url = 'api/country/' + country.id;
     const http_options = { headers: new HttpHeaders({'Content-Type': 'application/json'}) };
     return this.http.delete(http_url, http_options);
   }
