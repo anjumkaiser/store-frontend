@@ -27,7 +27,7 @@ export class CountryService {
   }
 
   addCountry(country: Country): Observable<Country> {
-    const http_url = 'api/country/add';
+    const http_url = 'api/country';
     const http_options = { headers: new HttpHeaders({'Content-Type': 'application/json'}) };
     return this.http.post<ICountry>(http_url, country, http_options);
   }
