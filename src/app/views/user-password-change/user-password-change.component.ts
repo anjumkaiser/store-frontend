@@ -14,7 +14,7 @@ import { MatSnackBar } from '@angular/material';
 export class UserPasswordChangeComponent implements OnInit {
 
   private user: any;
-  private form_group_change_password: FormGroup;
+  form_group_change_password: FormGroup;
 
   constructor(
     private location: Location,
