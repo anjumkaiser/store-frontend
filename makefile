@@ -7,6 +7,7 @@ all:	src/index.html \
 	src/app/app.component.html \
 	src/app/views/navbar/navbar.component.html \
 	src/app/views/user-profile/user-profile.component.html \
+	src/app/views/user-password-change/user-password-change.component.html \
 	src/app/views/authenticate/authenticate.component.html \
 	src/app/views/authenticate-password/authenticate-password.component.html \
 	src/app/views/authenticate-callback/authenticate-callback.component.html \
@@ -46,6 +47,9 @@ src/app/views/navbar/navbar.component.html:	src/app/views/navbar/navbar.componen
 	$(PUGJS) $<
 
 src/app/views/user-profile/user-profile.component.html:	src/app/views/user-profile/user-profile.component.pug
+	$(PUGJS) $<
+
+src/app/views/user-password-change/user-password-change.component.html:	src/app/views/user-password-change/user-password-change.component.pug
 	$(PUGJS) $<
 
 src/app/views/backoffice-dashboard/backoffice-dashboard.component.html: src/app/views/backoffice-dashboard/backoffice-dashboard.component.pug

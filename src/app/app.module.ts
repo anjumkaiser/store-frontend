@@ -20,6 +20,7 @@ import { AuthenticatePasswordComponent } from './views/authenticate-password/aut
 import { AuthenticateCallbackComponent } from './views/authenticate-callback/authenticate-callback.component';
 import { NavbarComponent } from './views/navbar/navbar.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
+import { UserPasswordChangeComponent } from './views/user-password-change/user-password-change.component';
 
 import { AuthenticationService } from './services/authentication.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
@@ -46,6 +47,7 @@ export function provideConfig(appConfig: AppConfigService) {
     AuthenticateCallbackComponent,
     NavbarComponent,
     UserProfileComponent,
+    UserPasswordChangeComponent,
   ],
   imports: [
     BrowserModule,

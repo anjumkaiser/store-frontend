@@ -12,6 +12,9 @@ import { UnAuthenticationGuard } from './guards/unauthentication.guard';
 import { AuthenticateCallbackComponent } from './views/authenticate-callback/authenticate-callback.component';
 import { AuthenticatePasswordComponent } from './views/authenticate-password/authenticate-password.component';
 
+import { UserPasswordChangeComponent } from './views/user-password-change/user-password-change.component';
+
+
 const routes: Routes = [
   { path: 'authenticate/google/authorize', component: AuthenticateCallbackComponent },
   { path: 'authenticate/password', component: AuthenticatePasswordComponent },
@@ -20,6 +23,7 @@ const routes: Routes = [
   { path: 'product', component: ProductListComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'profile', component: UserProfileComponent, canActivate: [AuthenticationGuard] },
+  { path: 'profile/password', component: UserPasswordChangeComponent, canActivate: [AuthenticationGuard] },
   { path: '', redirectTo: 'product', pathMatch: 'full' },
 ];
 

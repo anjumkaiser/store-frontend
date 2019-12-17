@@ -12,6 +12,7 @@ import {
   MatTableModule,
   MatPaginatorModule,
   MatSortModule,
+  MatSnackBarModule,
 } from '@angular/material';
 
 
@@ -31,6 +32,7 @@ import {
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSnackBarModule,
   ],
   declarations: []
 })
