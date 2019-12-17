@@ -1,7 +1,10 @@
-div
-    div 
-        h1 {{user_name}}'s Profile
-    
-    div
-        button(mat-button, (click)="back_button_clicked()") Back
-
+div.container
+    div.column
+        h1.title {{user.display_name}}'s Profile
+        
+    div.column
+        h3 Login id: {{user.name}}
+        
+    div.column
+        span: button(mat-raised-button, color='basic', (click)="change_password_button_clicked()") Change Password
+        span: button(mat-button, (click)="back_button_clicked()") Back

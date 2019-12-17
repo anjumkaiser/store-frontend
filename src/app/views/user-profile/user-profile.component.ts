@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../../services/authentication.service';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,15 +11,31 @@ import { Component, OnInit } from '@angular/core';
 export class UserProfileComponent implements OnInit {
 
   user_name: String = 'Username';
+  user: any;
 
-  constructor() { }
+
+  constructor(
+    private authService: AuthenticationService,
+    private location: Location,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+    this.authService.isLoggedIn().subscribe(value => {
+      this.authService.user.subscribe(x => {
+        this.user = x;
+      });
+    })
   }
 
 
   back_button_clicked(): void {
-    console.log('back_button_clicked()');
+    this.location.back();
+  }
+
+
+  change_password_button_clicked(): void {
+    this.router.navigate(['profile/password']);
   }
 
 }
