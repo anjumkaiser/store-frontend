@@ -2,6 +2,7 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { CountryService } from 'src/app/services/country.service';
 import { ICountry } from 'src/app/interfaces/icountry';
 import {
+  MatTable,
   MatTableDataSource,
   MatPaginator,
   MatSort
@@ -26,6 +27,7 @@ export class BackofficeCountryListComponent implements AfterViewInit {
 
   countries: MatTableDataSource<ICountry>;
 
+  @ViewChild('countryTable') countryTable: MatTable<any>;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
 
@@ -61,7 +63,10 @@ export class BackofficeCountryListComponent implements AfterViewInit {
   }
 
   removeCountry(country) {
-    console.log( 'removeCountry ' + JSON.stringify(country) );
+    this.countryService.deleteCountry(country).toPromise().then(x => {
+      this.countries.data.splice(this.countries.data.indexOf(country));
+      this.countryTable.renderRows();
+    });
   }
 
 }
