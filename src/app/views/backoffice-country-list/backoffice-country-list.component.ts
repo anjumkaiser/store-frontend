@@ -27,7 +27,7 @@ export class BackofficeCountryListComponent implements AfterViewInit {
 
   countries: MatTableDataSource<ICountry>;
 
-  @ViewChild('countryTable') countryTable: MatTable<any>;
+  @ViewChild(MatTable, {static: false}) countryTable: MatTable<any>;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
 
