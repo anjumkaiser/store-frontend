@@ -4,7 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Location } from '@angular/common';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-password-change',

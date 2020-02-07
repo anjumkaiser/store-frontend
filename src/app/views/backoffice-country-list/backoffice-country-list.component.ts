@@ -1,12 +1,9 @@
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { CountryService } from 'src/app/services/country.service';
 import { ICountry } from 'src/app/interfaces/icountry';
-import {
-  MatTable,
-  MatTableDataSource,
-  MatPaginator,
-  MatSort
-} from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 
 
 import { SelectionModel } from '@angular/cdk/collections';
@@ -27,9 +24,9 @@ export class BackofficeCountryListComponent implements AfterViewInit {
 
   countries: MatTableDataSource<ICountry>;
 
-  @ViewChild(MatTable, {static: false}) countryTable: MatTable<any>;
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort: MatSort;
+  @ViewChild(MatTable) countryTable: MatTable<any>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private countryService: CountryService,
