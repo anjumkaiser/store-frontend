@@ -41,9 +41,13 @@ export class AuthenticationService {
     const rtk = this.getRefreshToken();
 
     if (!!atk && !!rtk) {
-      const parsedJWT = KJUR.jws.JWS.parse(atk);
-      this.user.next(parsedJWT.payloadObj.pvt.user);
-      this.loggedIn.next(true);
+      try {
+        const parsedJWT = KJUR.jws.JWS.parse(atk);
+        this.user.next(parsedJWT.payloadObj.pvt.user);
+        this.loggedIn.next(true);
+      } catch (e) {
+        this.removeTokens();
+      }
     } else {
       this.removeTokens();
     }
