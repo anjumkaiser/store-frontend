@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BackofficeCountryEditComponent } from './backoffice-country-edit.component';
 
@@ -6,7 +6,7 @@ describe('BackofficeCountryEditComponent', () => {
   let component: BackofficeCountryEditComponent;
   let fixture: ComponentFixture<BackofficeCountryEditComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ BackofficeCountryEditComponent ]
     })

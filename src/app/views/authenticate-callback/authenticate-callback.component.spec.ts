@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AuthenticateCallbackComponent } from './authenticate-callback.component';
 
@@ -6,7 +6,7 @@ describe('AuthenticateCallbackComponent', () => {
   let component: AuthenticateCallbackComponent;
   let fixture: ComponentFixture<AuthenticateCallbackComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AuthenticateCallbackComponent ]
     })
