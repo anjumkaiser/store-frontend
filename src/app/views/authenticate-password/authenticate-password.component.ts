@@ -41,8 +41,9 @@ export class AuthenticatePasswordComponent implements OnInit {
       }
     });
 
-    this.authService.isLoggedIn().subscribe((value) => {
+    let authServiceHandle = this.authService.isLoggedIn().subscribe((value) => {
       if (true === value) {
+        authServiceHandle.unsubscribe(); // fix for leaked authService subscription
         this.router.navigate([this.returnUrl]);
       } else {
         if (this.formGroupLogin !== undefined) {
