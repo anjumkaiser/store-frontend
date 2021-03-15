@@ -2,6 +2,7 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { CountryService } from 'src/app/services/country.service';
 import { ICountry } from 'src/app/interfaces/icountry';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 
@@ -30,6 +31,7 @@ export class BackofficeCountryListComponent implements AfterViewInit {
 
   constructor(
     private countryService: CountryService,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngAfterViewInit() {
@@ -63,6 +65,13 @@ export class BackofficeCountryListComponent implements AfterViewInit {
     this.countryService.deleteCountry(country).toPromise().then(x => {
       this.countries.data.splice(this.countries.data.indexOf(country));
       this.countryTable.renderRows();
+    }).catch(e => {
+      //console.log('error caught ['+ JSON.stringify(e) + ']')
+      // e.status => 403
+      // e.statusText => 'Forbidden'
+      // e.message = 'Http failure response for <url>: 403 Frobidden'
+      // e.error = <flash error returned from api>
+      this.snackBar.open(e.error, 'Ok', {duration: 1000});
     });
   }
 
