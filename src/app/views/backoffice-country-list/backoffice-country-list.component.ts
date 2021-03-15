@@ -66,12 +66,16 @@ export class BackofficeCountryListComponent implements AfterViewInit {
       this.countries.data.splice(this.countries.data.indexOf(country));
       this.countryTable.renderRows();
     }).catch(e => {
-      //console.log('error caught ['+ JSON.stringify(e) + ']')
+      //console.log('error caught ['+ JSON.stringify(e) + ']');
       // e.status => 403
       // e.statusText => 'Forbidden'
       // e.message = 'Http failure response for <url>: 403 Frobidden'
       // e.error = <flash error returned from api>
-      this.snackBar.open(e.error, 'Ok', {duration: 1000});
+      if (e.status == 504) {
+        this.snackBar.open('Unable to access server.', 'Ok', {duration: 1000});
+      } else {
+        this.snackBar.open(e.error, 'Ok', {duration: 1000});
+      }
     });
   }
 
