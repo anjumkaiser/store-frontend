@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthUser, AuthenticationService } from '../../services/authentication.service';
 
@@ -29,6 +30,7 @@ export class AuthenticatePasswordComponent implements OnInit {
     private formbuilder: FormBuilder,
     private authService: AuthenticationService,
     private router: Router,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
@@ -43,6 +45,9 @@ export class AuthenticatePasswordComponent implements OnInit {
       if (true === value) {
         this.router.navigate([this.returnUrl]);
       } else {
+        if (this.formGroupLogin !== undefined) {
+          this.snackBar.open('Incorrect Username or Password', 'Ok', {duration: 3000});
+        }
         this.clearFormContent();
         this.isButtonLocked = false;
       }
