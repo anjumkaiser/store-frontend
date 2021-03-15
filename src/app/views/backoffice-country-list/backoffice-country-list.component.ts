@@ -35,9 +35,9 @@ export class BackofficeCountryListComponent implements AfterViewInit {
   ) { }
 
   ngAfterViewInit() {
-    this.countryService.getCountries().toPromise().then(e => {
-      this.countries = new MatTableDataSource(e);
-      this.resultsLength = e.length;
+    this.countryService.getCountries().toPromise().then(data => {
+      this.countries = new MatTableDataSource(data);
+      this.resultsLength = data.length;
     }).catch(e => {
       if (e.status == 500 || e.status == 504) {
         this.snackBar.open('Unable to access server.', 'Ok', {duration: 1000});
