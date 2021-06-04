@@ -46,10 +46,14 @@ export class AuthenticatePasswordComponent implements OnInit {
         authServiceHandle.unsubscribe(); // fix for leaked authService subscription
         this.router.navigate([this.returnUrl]);
       } else {
-        if (this.formGroupLogin !== undefined) {
-          this.snackBar.open('Incorrect Username or Password', 'Ok', {duration: 3000});
+        if (this.authService.getErrorStatus() === 'Unable to connect') {
+          this.snackBar.open('Unable to connect', 'Ok', {duration: 3000});
+        } else {
+          if (this.formGroupLogin !== undefined) {
+            this.snackBar.open('Incorrect Username or Password', 'Ok', {duration: 3000});
+          }
+          this.clearFormContent();
         }
-        this.clearFormContent();
         this.isButtonLocked = false;
       }
     });
