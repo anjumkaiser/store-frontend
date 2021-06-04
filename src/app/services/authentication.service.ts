@@ -28,6 +28,8 @@ class AuthResponse {
 })
 export class AuthenticationService {
 
+  private errorStatus: string = '';
+
   private loggedIn = new BehaviorSubject<boolean>(false);
   public publicKey: null | string = null;
 
@@ -60,6 +62,10 @@ export class AuthenticationService {
 
   isLoggedIn(): BehaviorSubject<boolean> {
     return this.loggedIn;
+  }
+
+  getErrorStatus(): string {
+    return this.errorStatus;
   }
 
 
@@ -139,14 +145,17 @@ export class AuthenticationService {
     this.http.post<AuthResponse>(http_url, auth_user, http_options).subscribe((resp: AuthResponse) => {
 
       if (!this.publicKey) {
+        this.errorStatus = 'Invalid public key returned by API';
         return;
       }
 
       if (!resp.auth_token) {
+        this.errorStatus = 'Invalid auth token returned by API';
         return;
       }
 
       if (!resp.refresh_token) {
+        this.errorStatus = 'Invalid refresh token returned by API';
         return;
       }
 
@@ -163,12 +172,19 @@ export class AuthenticationService {
       }
 
       if (isRefreshValid && isAuthValid) {
+        this.errorStatus = '';
         this.loggedIn.next(true);
       } else {
+        this.errorStatus = 'Invalid Refresh Token or Auth token returned by API';
         this.removeTokens();
       }
 
     }, (e: HttpErrorResponse) => {
+      if (e.status == 504) {
+        this.errorStatus = 'Unable to connect';
+      } else {
+        this.errorStatus = 'Other error';
+      }
       this.removeTokens();
     });
   }
